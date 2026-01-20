@@ -4,41 +4,34 @@ import { site } from "@/lib/site";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Desktop video background */}
-      <div className="absolute inset-0 hidden sm:block">
-        {/* TODO: replace /assets/video/hero.mp4 with your final */}
+      {/* Video background – all breakpoints */}
+      <div className="absolute inset-0">
         <video
           className="h-full w-full object-cover"
-          src="/assets/video/hero.mp4"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-        />
+          poster="/assets/photos/hero-poster.png" // optional; remove if you don’t have this
+        >
+          <source src="/assets/video/hero.mp4" type="video/mp4" />
+          {/* Fallback text if video can’t load */}
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-navy-900/35" />
       </div>
 
-      {/* Mobile image background */}
-      <div className="absolute inset-0 sm:hidden">
-        {/* TODO: swap image */}
-        <img
-          src="/assets/photos/photo-1.jpg"
-          alt=""
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-navy-900/35" />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl px-4 py-24 sm:py-32 min-h-[80vh] flex items-center">
-        <div className="max-w-xl">
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            Welcome to 
-            Warner Dental
+      {/* Content */}
+      <div className="relative mx-auto flex min-h-[80vh] max-w-6xl items-center px-4 py-24 sm:py-32">
+        <div className="max-w-xl text-white">
+          <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
+            Welcome to{" "}
+            <span className="block">Warner Dental</span>
           </h1>
 
           <p className="mt-5 text-lg leading-relaxed text-white/90">
-            World-class Dentistry. Small-town values. 
+            World-class dentistry. Small-town values.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
