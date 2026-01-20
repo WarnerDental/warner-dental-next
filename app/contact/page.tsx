@@ -1,6 +1,43 @@
+"use client";
+
+import type { FormEvent } from "react";
 import { site } from "@/lib/site";
 
 export default function ContactPage() {
+  const handleAppointmentSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+
+    const name =
+      (form.elements.namedItem("name") as HTMLInputElement)?.value || "";
+    const phone =
+      (form.elements.namedItem("phone") as HTMLInputElement)?.value || "";
+    const email =
+      (form.elements.namedItem("email") as HTMLInputElement)?.value || "";
+    const message =
+      (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "";
+
+    const subject = encodeURIComponent(
+      "New Appointment Request - Warner Dental"
+    );
+
+    const body = encodeURIComponent(
+      `A new appointment request was submitted from your website:\n\n` +
+        `Name: ${name}\n` +
+        `Phone: ${phone}\n` +
+        `Email: ${email}\n\n` +
+        (message
+          ? `Message:\n${message}\n\n`
+          : "") +
+        `Please contact this patient to coordinate scheduling.`
+    );
+
+    const to = site.email; // whatever email you set in site config
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <>
       <div className="border-b border-black/5 bg-white">
@@ -9,7 +46,8 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-navy-800">
-            Call, email, or request a visit online. We’ll get back to you quickly.
+            Call, email, or request a visit online. We’ll get back to you
+            quickly.
           </p>
         </div>
       </div>
@@ -50,11 +88,13 @@ export default function ContactPage() {
           >
             <h2 className="text-2xl font-semibold">Request an appointment</h2>
             <p className="mt-3 text-sm text-navy-800">
-              {/* NOTE: This is a front-end placeholder. Hook to your form tool later. */}
               Share a few details and we’ll reach out with scheduling options.
             </p>
 
-            <form className="mt-6 grid gap-4">
+            <form
+              className="mt-6 grid gap-4"
+              onSubmit={handleAppointmentSubmit}
+            >
               <label className="grid gap-2 text-sm">
                 <span className="font-medium">Name</span>
                 <input
@@ -62,6 +102,7 @@ export default function ContactPage() {
                   type="text"
                   name="name"
                   autoComplete="name"
+                  required
                 />
               </label>
 
@@ -72,6 +113,7 @@ export default function ContactPage() {
                   type="tel"
                   name="phone"
                   autoComplete="tel"
+                  required
                 />
               </label>
 
@@ -82,6 +124,7 @@ export default function ContactPage() {
                   type="email"
                   name="email"
                   autoComplete="email"
+                  required
                 />
               </label>
 
@@ -101,7 +144,8 @@ export default function ContactPage() {
               </button>
 
               <p className="text-xs text-navy-800">
-                By submitting, you agree we may contact you by phone/text/email to coordinate scheduling.
+                By submitting, you agree we may contact you by phone/text/email
+                to coordinate scheduling.
               </p>
             </form>
           </section>
