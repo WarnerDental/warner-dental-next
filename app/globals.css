@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling for in-page anchors */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Basic focus visibility */
+:focus-visible {
+  outline: 2px solid #B08D57;
+  outline-offset: 2px;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
