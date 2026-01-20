@@ -23,7 +23,7 @@ export default function ContactPage() {
     );
 
     const body = encodeURIComponent(
-      `The following message will be sent to Warner Dental's main email address, and they will get back to you ASAP.:\n\n` +
+      `The following message will be sent to Warner Dental's main email address, and they will get back to you ASAP:\n\n` +
         `Name: ${name}\n` +
         `Phone: ${phone}\n` +
         `Email: ${email}\n\n` +
