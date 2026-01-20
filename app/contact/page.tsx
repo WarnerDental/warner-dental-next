@@ -23,14 +23,14 @@ export default function ContactPage() {
     );
 
     const body = encodeURIComponent(
-      `A new appointment request was submitted from your website:\n\n` +
+      `The following message will be sent to Warner Dental's main email address, and they will get back to you ASAP.:\n\n` +
         `Name: ${name}\n` +
         `Phone: ${phone}\n` +
         `Email: ${email}\n\n` +
         (message
           ? `Message:\n${message}\n\n`
           : "") +
-        `Please contact this patient to coordinate scheduling.`
+        `Look forward to hearing from us soon!`
     );
 
     const to = site.email; // whatever email you set in site config
