@@ -6,14 +6,30 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.warnerdentalteam.com"),
   title: {
     default: `${site.name} | ${site.tagline}`,
-    template: `%s | ${site.name}`
+    template: `%s | ${site.name}`,
   },
   description:
     "Modern, friendly dental care in Rigby, Idaho. Preventive, restorative, and cosmetic dentistry for the whole family.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }]
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  openGraph: {
+    type: "website",
+    url: "https://www.warnerdentalteam.com",
+    title: `${site.name} | ${site.tagline}`,
+    description:
+      "Modern, relationship-focused dental care in Rigby, Idaho. Conservative, world-class family and cosmetic dentistry without the rushed, corporate feel.",
+    siteName: site.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} | ${site.tagline}`,
+    description:
+      "World-class dentistry with small-town values in Rigby, Idaho.",
+  },
 };
+;
 
 export default function RootLayout({
   children
