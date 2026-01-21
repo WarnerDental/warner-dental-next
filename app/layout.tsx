@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { site } from "@/lib/site";
 import TopBar from "@/components/TopBar";
@@ -29,17 +30,32 @@ export const metadata: Metadata = {
       "World-class dentistry with small-town values in Rigby, Idaho.",
   },
 };
-;
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className="bg-white text-navy-900 antialiased">
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-11SQPX73BS"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-11SQPX73BS', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] rounded-md bg-white px-4 py-2 shadow-soft"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:text-navy-900 focus:shadow"
         >
           Skip to content
         </a>
