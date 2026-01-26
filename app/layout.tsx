@@ -45,11 +45,24 @@ export default function RootLayout({
         <Script id="ga-gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-11SQPX73BS', {
-              page_path: window.location.pathname,
-            });
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // GA4
+  gtag('config', 'G-11SQPX73BS');
+
+  // Google Ads
+  gtag('config', 'AW-17859415734');
+
+  // Track clicks on any tel: link as a Google Ads conversion
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!a) return;
+
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17859415734/MuT7CNu8h-0bELadhMRC'
+    });
+  }, true);
           `}
         </Script>
 
