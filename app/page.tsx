@@ -9,41 +9,6 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <Section eyebrow="Services" title="Care for every stage of life">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <ServiceCard
-            title="Checkups & Cleanings"
-            description="Prevention-first visits to keep you healthy and catch concerns early."
-            href="/services#preventive"
-          />
-          <ServiceCard
-            title="Cosmetic Dentistry"
-            description="Whitening, bonding, and veneers—subtle upgrades with natural results."
-            href="/services#cosmetic"
-          />
-          <ServiceCard
-            title="Restorative Care"
-            description="Fillings, crowns, and bridges designed for comfort and longevity."
-            href="/services#restorative"
-          />
-          <ServiceCard
-            title="Family Dentistry"
-            description="A calm, friendly experience for kids, teens, and adults."
-            href="/services#family"
-          />
-          <ServiceCard
-            title="Implant Restorations"
-            description="Modern tooth replacement options that look and feel secure."
-            href="/services#implants"
-          />
-          <ServiceCard
-            title="Comfort & Emergency"
-            description="We prioritize gentle care—especially when you’re in pain or anxious."
-            href="/services#comfort"
-          />
-        </div>
-      </Section>
-
       <Section eyebrow="Meet your dentist" title="Modern care, personal attention">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
@@ -90,6 +55,41 @@ export default function HomePage() {
               className="h-full w-full object-cover"
             />
           </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="Services" title="Care for every stage of life">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <ServiceCard
+            title="Checkups & Cleanings"
+            description="Prevention-first visits to keep you healthy and catch concerns early."
+            href="/services#preventive"
+          />
+          <ServiceCard
+            title="Cosmetic Dentistry"
+            description="Whitening, bonding, and veneers—subtle upgrades with natural results."
+            href="/services#cosmetic"
+          />
+          <ServiceCard
+            title="Restorative Care"
+            description="Fillings, crowns, and bridges designed for comfort and longevity."
+            href="/services#restorative"
+          />
+          <ServiceCard
+            title="Family Dentistry"
+            description="A calm, friendly experience for kids, teens, and adults."
+            href="/services#family"
+          />
+          <ServiceCard
+            title="Implant Restorations"
+            description="Modern tooth replacement options that look and feel secure."
+            href="/services#implants"
+          />
+          <ServiceCard
+            title="Comfort & Emergency"
+            description="We prioritize gentle care—especially when you’re in pain or anxious."
+            href="/services#comfort"
+          />
         </div>
       </Section>
 
