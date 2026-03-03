@@ -99,21 +99,21 @@ export default function HomePage() {
             quotes={[
               {
                 quote:
-                  "Everyone was welcoming and organized. The visit felt calm, and I left knowing exactly what the plan was.",
-                name: "Patient Review",
+                  "I've known Dr. Warner and his family for years. He is kind, gentle, and honest. I'd recommend him to anyone.",
+                name: "Carol F.",
                 location: "Rigby, ID"
               },
               {
                 quote:
-                  "Clear communication, gentle care, and no pressure. Exactly what I want in a dental office.",
-                name: "Patient Review",
-                location: "Jefferson County"
+                  "We've had some bad experiences at other offices. Don't get me wrong, everyone has been kind. But Dr. Warner is on a whole different level. The care we got was exceptional.",
+                name: "Jessie M.",
+                location: "Idaho Falls, ID"
               },
               {
                 quote:
-                  "They were great with my kids—patient, friendly, and efficient. Scheduling was easy too.",
-                name: "Patient Review",
-                location: "Ririe, ID"
+                  "Not a fan of the dentist. But Dr. Warner made me feel so comfotable. I feel like I've known him for years. I'll definitely be back.",
+                name: "John S.",
+                location: "Rigby, ID"
               }
             ]}
           />
