@@ -7,6 +7,22 @@ import CTA from "@/components/CTA";
 export default function HomePage() {
   return (
     <>
+      {/* OPENING BANNER */}
+      <div className="w-full bg-gold-500 text-navy-900">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 text-sm font-semibold md:text-base">
+          <span className="tracking-wide">
+            NOW OPEN — Now welcoming new patients
+          </span>
+
+          <a
+            href="/contact#request"
+            className="rounded-full bg-navy-900 px-4 py-2 text-white transition hover:bg-navy-800"
+          >
+            Call Now to Schedule
+          </a>
+        </div>
+      </div>
+      
       <Hero />
 
       <Section eyebrow="Meet your dentist" title="Modern care, personal attention">
