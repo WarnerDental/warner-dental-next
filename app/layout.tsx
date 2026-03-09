@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     images: [
       {
-        url: "/preview.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Warner Dental – Dentist in Rigby, Idaho",
