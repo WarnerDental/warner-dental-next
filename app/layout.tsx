@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     url: "https://www.warnerdentalteam.com",
     title: `${site.name} | ${site.tagline}`,
     description:
-      "Modern, relationship-focused dental care in Rigby, Idaho. Conservative, world-class family and cosmetic dentistry without the rushed, corporate feel.",
+      "Relationship-focused dental care in Rigby, Idaho. Conservative, world-class family and cosmetic dentistry without the rushed, corporate feel.",
     siteName: site.name,
     images: [
       {
-        url: "/assets/photos/photo-1.jpg",
+        url: "/og-image",
         width: 1200,
         height: 630,
         alt: "Warner Dental – Dentist in Rigby, Idaho",
