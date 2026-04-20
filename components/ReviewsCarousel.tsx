@@ -31,7 +31,7 @@ export default function ReviewsCarousel() {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {reviews.map((review, i) => (
-            <div key={i} style={{ flex: '0 0 50%', minWidth: '0', padding: '0 8px' }}>
+            <div key={i} style={{ flex: '0 0 100%', minWidth: '0', padding: '0 8px' }} className="sm:flex-[0_0_50%]">
               <div className="bg-white rounded-2xl shadow-md p-6 h-full flex flex-col gap-4">
                 <div className="flex gap-1 text-yellow-400 text-xl">
                   {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
