@@ -9,8 +9,8 @@ export async function GET() {
   const data = await res.json();
 
   const reviews = (data.result?.reviews ?? [])
-    .filter((r) => r.rating >= 4)
-    .map((r) => ({
+    .filter((r: any) => r.rating >= 4)
+    .map((r: any) => ({
       author: r.author_name,
       rating: r.rating,
       text: r.text,

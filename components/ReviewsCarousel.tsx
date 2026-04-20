@@ -4,9 +4,15 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
-
+type Review = {
+  author: string;
+  rating: number;
+  text: string;
+  time?: string;
+  photo?: string;
+};
 export default function ReviewsCarousel() {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
