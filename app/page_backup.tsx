@@ -1,9 +1,9 @@
+﻿import React from 'react';
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import CTA from "@/components/CTA";
-import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 export default function HomePage() {
   return (
@@ -12,10 +12,9 @@ export default function HomePage() {
       <div className="w-full bg-gold-500 text-navy-900">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 text-sm font-semibold md:text-base">
           <span className="tracking-wide">
-            Now Accepting New Patients — Appointments Available
+            Now Accepting New Patients â€” Appointments Available
           </span>
-
-          <a
+          
             href="/contact#request"
             className="rounded-full bg-navy-900 px-4 py-2 text-white transition hover:bg-navy-800"
           >
@@ -30,8 +29,7 @@ export default function HomePage() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <p className="text-navy-800 leading-relaxed">
-              {/* TODO: replace with Dr. Warner bio */}
-              Dr. Cory Warner is proud to call Rigby home. After growing up here, he pursued advanced training and had opportunities to practice in larger cities—but he chose to return to the community that shaped him. Today, Dr. Warner is committed to bringing world-class dental care to Rigby, with an emphasis on trust, clear communication, and building lasting relationships with every patient he serves.
+              Dr. Cory Warner is proud to call Rigby home. After growing up here, he pursued advanced training and had opportunities to practice in larger citiesâ€”but he chose to return to the community that shaped him. Today, Dr. Warner is committed to bringing world-class dental care to Rigby, with an emphasis on trust, clear communication, and building lasting relationships with every patient he serves.
             </p>
             <ul className="mt-6 space-y-3 text-sm text-navy-800">
               <li className="flex gap-3">
@@ -47,15 +45,14 @@ export default function HomePage() {
                 Family-friendly environment
               </li>
             </ul>
-
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
+              
                 href="/about"
                 className="rounded-full bg-navy-900 px-6 py-3 text-sm font-medium text-white hover:bg-navy-800"
               >
                 About Warner Dental
               </a>
-              <a
+              
                 href="/contact#request"
                 className="rounded-full border border-navy-900/15 px-6 py-3 text-sm font-medium hover:border-navy-900/30 hover:bg-black/[0.02]"
               >
@@ -63,8 +60,6 @@ export default function HomePage() {
               </a>
             </div>
           </div>
-
-          {/* TODO: swap photo */}
           <div className="overflow-hidden rounded-3xl border border-black/5 shadow-soft">
             <img
               src="/assets/photos/photo-2.png"
@@ -84,7 +79,7 @@ export default function HomePage() {
           />
           <ServiceCard
             title="Cosmetic Dentistry"
-            description="Whitening, bonding, and veneers—subtle upgrades with natural results."
+            description="Whitening, bonding, and veneersâ€”subtle upgrades with natural results."
             href="/services#cosmetic"
           />
           <ServiceCard
@@ -104,40 +99,74 @@ export default function HomePage() {
           />
           <ServiceCard
             title="Comfort & Emergency"
-            description="We prioritize gentle care—especially when you’re in pain or anxious."
+            description="We prioritize gentle careâ€”especially when you're in pain or anxious."
             href="/services#comfort"
           />
         </div>
       </Section>
 
-<Section eyebrow="Google Reviews" title="What Our Patients Say">
-  <ReviewsCarousel />
-</Section>
+      <Section eyebrow="Kind words" title="Trusted by families in our community">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <TestimonialCarousel
+            quotes={[
+              {
+                quote: "I've known Dr. Warner and his family for years. He is kind, gentle, and honest. I'd recommend him to anyone.",
+                name: "Carol F.",
+                location: "Rigby, ID"
+              },
+              {
+                quote: "We've had some bad experiences at other offices. Don't get me wrong, everyone has been kind. But Dr. Warner is on a whole different level. The care we got was exceptional.",
+                name: "Jessie M.",
+                location: "Idaho Falls, ID"
+              },
+              {
+                quote: "Not a fan of the dentist. But Dr. Warner made me feel so comfortable. I feel like I've known him for years. I'll definitely be back.",
+                name: "John S.",
+                location: "Rigby, ID"
+              }
+            ]}
+          />
+          <div className="grid gap-5">
+            <div className="rounded-2xl border border-black/5 bg-white p-6 shadow-soft">
+              <h3 className="text-lg font-semibold">A premium experienceâ€”without the attitude</h3>
+              <p className="mt-3 text-sm leading-relaxed text-navy-800">
+                Thoughtful details, modern tools, and a team that treats you like a neighbor.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-black/5 bg-white p-6 shadow-soft">
+              <h3 className="text-lg font-semibold">Clear treatment plans</h3>
+              <p className="mt-3 text-sm leading-relaxed text-navy-800">
+                We walk through options, timelines, and costs so you can choose what fits.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       <Section eyebrow="Insurance & financing" title="Simple, straightforward options">
         <div className="grid gap-5 md:grid-cols-2">
           <div className="rounded-2xl border border-black/5 bg-white p-8 shadow-soft">
             <h3 className="text-xl font-semibold">Have insurance?</h3>
             <p className="mt-3 text-sm leading-relaxed text-navy-800">
-              We’ll help you understand your benefits and estimate costs before treatment.
+              We'll help you understand your benefits and estimate costs before treatment.
             </p>
-            <a
+            
               className="mt-6 inline-flex rounded-full bg-black/[0.03] px-5 py-2.5 text-sm font-medium hover:bg-black/[0.06]"
               href="/new-patients#insurance"
             >
-              Insurance details →
+              Insurance details â†’
             </a>
           </div>
-
           <div className="rounded-2xl border border-black/5 bg-white p-8 shadow-soft">
             <h3 className="text-xl font-semibold">No insurance?</h3>
             <p className="mt-3 text-sm leading-relaxed text-navy-800">
               Ask about flexible payment options designed to keep care within reach.
             </p>
-            <a
+            
               className="mt-6 inline-flex rounded-full bg-black/[0.03] px-5 py-2.5 text-sm font-medium hover:bg-black/[0.06]"
               href="/new-patients#financing"
             >
-              Financing options →
+              Financing options â†’
             </a>
           </div>
         </div>

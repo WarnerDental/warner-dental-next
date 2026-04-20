@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Modern, friendly dental care in Rigby, Idaho. Preventive, restorative, and cosmetic dentistry for the whole family.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/icon.svg", type: "image/svg+xml" }],
   openGraph: {
     type: "website",
     url: "https://www.warnerdentalteam.com",
