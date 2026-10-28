@@ -59,7 +59,7 @@ export default function ContactPage() {
 
             <div className="mt-5 space-y-2 text-sm text-navy-800">
               <a className="block hover:underline" href={site.phoneHref}>
-                {site.phoneDisplay}
+                <a href={site.phoneHref}>{site.phoneDisplay}</a>
               </a>
               <a className="block hover:underline" href={`mailto:${site.email}`}>
                 {site.email}

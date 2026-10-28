@@ -20,7 +20,7 @@ export default function Footer() {
 
           <div className="mt-6 space-y-2 text-sm">
             <a className="block hover:underline" href={site.phoneHref}>
-              {site.phoneDisplay}
+              <a href={site.phoneHref}>{site.phoneDisplay}</a>
             </a>
             <a className="block hover:underline" href={site.faxHref}>
             Fax: {site.faxDisplay}

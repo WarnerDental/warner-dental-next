@@ -7,7 +7,7 @@ export default function TopBar() {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-2 text-sm">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           <a className="hover:underline" href={site.phoneHref} aria-label="Call us">
-            {site.phoneDisplay}
+            <a href={site.phoneHref}>{site.phoneDisplay}</a>
           </a>
           <span className="hidden h-4 w-px bg-black/10 sm:inline-block" />
           <a
