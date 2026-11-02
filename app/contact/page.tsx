@@ -2,30 +2,17 @@
 
 import { useState, type FormEvent } from "react";
 import { site } from "@/lib/site";
+import CallTextButtons from "@/components/CallTextButtons";
 
 // Google Ads conversion for form submissions (we'll fill this in next step)
-const ADS_FORM_CONVERSION = "";
+   const ADS_FORM_CONVERSION = "AW-17859415734/gPoACKmG-LAdELadhMRC";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 const inputClass = "rounded-xl border border-black/10 px-4 py-3";
 const primaryBtn =
   "inline-flex items-center justify-center rounded-full bg-navy-900 px-6 py-3 text-sm font-medium text-white hover:bg-navy-800";
-const outlineBtn =
-  "inline-flex items-center justify-center rounded-full border border-navy-900 px-6 py-3 text-sm font-medium text-navy-900 hover:bg-navy-900/5";
 
-function CallTextButtons() {
-  return (
-    <div className="flex flex-wrap gap-3">
-      <a className={primaryBtn} href={site.phoneHref}>
-        Call {site.phoneDisplay}
-      </a>
-      <a className={outlineBtn} href={site.smsHref}>
-        Text us
-      </a>
-    </div>
-  );
-}
 
 export default function ContactPage() {
   const [status, setStatus] = useState<Status>("idle");
