@@ -27,25 +27,32 @@ export async function POST(req: Request) {
   const name = clean(body.name, 100);
   const phone = clean(body.phone, 30);
   const email = clean(body.email, 120);
+  const contactMethod = clean(body.contactMethod, 20);
   const patientType = clean(body.patientType, 20);
   const bestTime = clean(body.bestTime, 40);
   const message = clean(body.message, 1000);
 
-  if (!name || !phone) {
+  if (!name || !phone || (contactMethod === "Email" && !email)) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
   const text = [
     "New appointment request from warnerdentalteam.com",
     "",
+    `PREFERS: ${contactMethod ? contactMethod.toUpperCase() : "(not specified)"}`,
+    "",
     `Name: ${name}`,
     `Phone: ${phone}`,
     `Email: ${email || "(not provided)"}`,
     `Patient: ${patientType || "(not specified)"}`,
-    `Best time to call: ${bestTime || "(not specified)"}`,
+    `Best time to reach: ${bestTime || "(not specified)"}`,
     "",
     message ? `Message:\n${message}` : "(No message)",
   ].join("\n");
+
+  const subject =
+    `New appointment request: ${name}` +
+    (contactMethod ? ` (prefers ${contactMethod.toLowerCase()})` : "");
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -57,7 +64,7 @@ export async function POST(req: Request) {
       from: "Warner Dental Website <website@warnerdentalteam.com>",
       to: [site.email],
       ...(email ? { reply_to: email } : {}),
-      subject: `New appointment request: ${name}`,
+      subject,
       text,
     }),
   });

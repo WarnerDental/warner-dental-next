@@ -9,9 +9,27 @@ const ADS_FORM_CONVERSION = "";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const inputClass = "rounded-xl border border-black/10 px-4 py-3";
+const primaryBtn =
+  "inline-flex items-center justify-center rounded-full bg-navy-900 px-6 py-3 text-sm font-medium text-white hover:bg-navy-800";
+const outlineBtn =
+  "inline-flex items-center justify-center rounded-full border border-navy-900 px-6 py-3 text-sm font-medium text-navy-900 hover:bg-navy-900/5";
+
+function CallTextButtons() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      <a className={primaryBtn} href={site.phoneHref}>
+        Call {site.phoneDisplay}
+      </a>
+      <a className={outlineBtn} href={site.smsHref}>
+        Text us
+      </a>
+    </div>
+  );
+}
 
 export default function ContactPage() {
   const [status, setStatus] = useState<Status>("idle");
+  const [contactMethod, setContactMethod] = useState("Text");
 
   const handleAppointmentSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,13 +79,11 @@ export default function ContactPage() {
           <section className="rounded-2xl border border-black/5 bg-white p-8 shadow-soft">
             <h2 className="text-2xl font-semibold">Office info</h2>
 
-            <div className="mt-5 space-y-2 text-sm text-navy-800">
-              <a className="block hover:underline" href={site.phoneHref}>
-                Call: {site.phoneDisplay}
-              </a>
-              <a className="block hover:underline" href={site.smsHref}>
-                Text: {site.phoneDisplay}
-              </a>
+            <div className="mt-5">
+              <CallTextButtons />
+            </div>
+
+            <div className="mt-6 space-y-2 text-sm text-navy-800">
               <a className="block hover:underline" href={`mailto:${site.email}`}>
                 {site.email}
               </a>
@@ -101,27 +117,26 @@ export default function ContactPage() {
                   Thanks! We got your request.
                 </p>
                 <p className="mt-2 text-sm text-navy-800">
-                  We’ll reach out soon to find a time that works for you. Need
-                  us sooner?{" "}
-                  <a className="underline" href={site.phoneHref}>
-                    Call
-                  </a>{" "}
-                  or{" "}
-                  <a className="underline" href={site.smsHref}>
-                    text
-                  </a>{" "}
-                  {site.phoneDisplay}.
+                  We’ll reach out soon the way you asked. Need us sooner?
                 </p>
+                <div className="mt-4">
+                  <CallTextButtons />
+                </div>
               </div>
             ) : (
               <>
                 <p className="mt-3 text-sm text-navy-800">
-                  Share a few details and we’ll reach out with scheduling
-                  options. Prefer to text?{" "}
-                  <a className="font-medium underline" href={site.smsHref}>
-                    Text us
-                  </a>
-                  .
+                  Rather skip the form? Call or text us directly.
+                </p>
+                <div className="mt-3">
+                  <CallTextButtons />
+                </div>
+
+                <div className="my-6 border-t border-black/5" />
+
+                <p className="text-sm text-navy-800">
+                  Or share a few details and we’ll reach out with scheduling
+                  options.
                 </p>
 
                 <form
@@ -148,11 +163,38 @@ export default function ContactPage() {
                     <input className={inputClass} type="tel" name="phone" autoComplete="tel" required />
                   </label>
 
+                  <fieldset className="grid gap-2 text-sm">
+                    <legend className="mb-2 font-medium">How should we reach you?</legend>
+                    <div className="flex flex-wrap gap-6">
+                      {["Text", "Call", "Email"].map((m) => (
+                        <label key={m} className="flex items-center gap-2">
+                          <input
+                            type="radio"
+                            name="contactMethod"
+                            value={m}
+                            checked={contactMethod === m}
+                            onChange={() => setContactMethod(m)}
+                          />
+                          {m}
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+
                   <label className="grid gap-2 text-sm">
                     <span className="font-medium">
-                      Email <span className="font-normal text-navy-800">(optional)</span>
+                      Email{" "}
+                      {contactMethod !== "Email" && (
+                        <span className="font-normal text-navy-800">(optional)</span>
+                      )}
                     </span>
-                    <input className={inputClass} type="email" name="email" autoComplete="email" />
+                    <input
+                      className={inputClass}
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      required={contactMethod === "Email"}
+                    />
                   </label>
 
                   <fieldset className="grid gap-2 text-sm">
@@ -170,7 +212,7 @@ export default function ContactPage() {
                   </fieldset>
 
                   <label className="grid gap-2 text-sm">
-                    <span className="font-medium">Best time to call you</span>
+                    <span className="font-medium">Best time to reach you</span>
                     <select className={inputClass} name="bestTime" defaultValue="Anytime">
                       <option>Anytime</option>
                       <option>Morning</option>
@@ -187,7 +229,7 @@ export default function ContactPage() {
                     <textarea className={`min-h-[110px] ${inputClass}`} name="message" />
                     <span className="text-xs text-navy-800">
                       Please don’t include medical details here. We’ll go over
-                      those with you by phone.
+                      those with you directly.
                     </span>
                   </label>
 
@@ -199,7 +241,7 @@ export default function ContactPage() {
                   )}
 
                   <button
-                    className="mt-2 rounded-full bg-navy-900 px-6 py-3 text-sm font-medium text-white hover:bg-navy-800 disabled:opacity-60"
+                    className={`mt-2 ${primaryBtn} disabled:opacity-60`}
                     type="submit"
                     disabled={status === "sending"}
                   >
