@@ -3,6 +3,7 @@ export const site = {
   tagline: "Family & Cosmetic Dentistry", // TODO: swap if you choose a different tagline
   phoneDisplay: "(208) 745-7424",
   phoneHref: "tel:+12087457424", // TODO: update with real number
+    smsHref: "sms:+12087457424",
   faxDisplay: "(208) 545-0550",     // TODO: change to your real fax
   faxHref: "fax:+12085450550",      // (some devices support this; harmless if not)
   email: "office@warnerdentalteam.com",

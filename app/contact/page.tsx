@@ -1,41 +1,45 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { site } from "@/lib/site";
 
+// Google Ads conversion for form submissions (we'll fill this in next step)
+const ADS_FORM_CONVERSION = "";
+
+type Status = "idle" | "sending" | "sent" | "error";
+
+const inputClass = "rounded-xl border border-black/10 px-4 py-3";
+
 export default function ContactPage() {
-  const handleAppointmentSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<Status>("idle");
+
+  const handleAppointmentSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
 
-    const name =
-      (form.elements.namedItem("name") as HTMLInputElement)?.value || "";
-    const phone =
-      (form.elements.namedItem("phone") as HTMLInputElement)?.value || "";
-    const email =
-      (form.elements.namedItem("email") as HTMLInputElement)?.value || "";
-    const message =
-      (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "";
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Request failed");
 
-    const subject = encodeURIComponent(
-      "New Appointment Request - Warner Dental"
-    );
+      form.reset();
+      setStatus("sent");
 
-    const body = encodeURIComponent(
-      `The following message will be sent to Warner Dental's main email address, and they will get back to you ASAP:\n\n` +
-        `Name: ${name}\n` +
-        `Phone: ${phone}\n` +
-        `Email: ${email}\n\n` +
-        (message
-          ? `Message:\n${message}\n\n`
-          : "") +
-        `Look forward to hearing from us soon!`
-    );
-
-    const to = site.email; // whatever email you set in site config
-
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      const gtag = (window as any).gtag;
+      if (typeof gtag === "function") {
+        gtag("event", "generate_lead", { form: "appointment_request" });
+        if (ADS_FORM_CONVERSION) {
+          gtag("event", "conversion", { send_to: ADS_FORM_CONVERSION });
+        }
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -46,7 +50,7 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-navy-800">
-            Call, email, or request a visit online. We’ll get back to you
+            Call, text, or request a visit online. We’ll get back to you
             quickly.
           </p>
         </div>
@@ -59,7 +63,10 @@ export default function ContactPage() {
 
             <div className="mt-5 space-y-2 text-sm text-navy-800">
               <a className="block hover:underline" href={site.phoneHref}>
-                <a href={site.phoneHref}>{site.phoneDisplay}</a>
+                Call: {site.phoneDisplay}
+              </a>
+              <a className="block hover:underline" href={site.smsHref}>
+                Text: {site.phoneDisplay}
               </a>
               <a className="block hover:underline" href={`mailto:${site.email}`}>
                 {site.email}
@@ -87,67 +94,125 @@ export default function ContactPage() {
             aria-label="Request an appointment"
           >
             <h2 className="text-2xl font-semibold">Request an appointment</h2>
-            <p className="mt-3 text-sm text-navy-800">
-              Share a few details and we’ll reach out with scheduling options.
-            </p>
 
-            <form
-              className="mt-6 grid gap-4"
-              onSubmit={handleAppointmentSubmit}
-            >
-              <label className="grid gap-2 text-sm">
-                <span className="font-medium">Name</span>
-                <input
-                  className="rounded-xl border border-black/10 px-4 py-3"
-                  type="text"
-                  name="name"
-                  autoComplete="name"
-                  required
-                />
-              </label>
+            {status === "sent" ? (
+              <div className="mt-6 rounded-xl bg-navy-900/5 p-6" role="status">
+                <p className="text-lg font-semibold">
+                  Thanks! We got your request.
+                </p>
+                <p className="mt-2 text-sm text-navy-800">
+                  We’ll reach out soon to find a time that works for you. Need
+                  us sooner?{" "}
+                  <a className="underline" href={site.phoneHref}>
+                    Call
+                  </a>{" "}
+                  or{" "}
+                  <a className="underline" href={site.smsHref}>
+                    text
+                  </a>{" "}
+                  {site.phoneDisplay}.
+                </p>
+              </div>
+            ) : (
+              <>
+                <p className="mt-3 text-sm text-navy-800">
+                  Share a few details and we’ll reach out with scheduling
+                  options. Prefer to text?{" "}
+                  <a className="font-medium underline" href={site.smsHref}>
+                    Text us
+                  </a>
+                  .
+                </p>
 
-              <label className="grid gap-2 text-sm">
-                <span className="font-medium">Phone</span>
-                <input
-                  className="rounded-xl border border-black/10 px-4 py-3"
-                  type="tel"
-                  name="phone"
-                  autoComplete="tel"
-                  required
-                />
-              </label>
+                <form
+                  className="mt-6 grid gap-4"
+                  onSubmit={handleAppointmentSubmit}
+                >
+                  {/* Spam trap: hidden from real visitors */}
+                  <input
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px" }}
+                  />
 
-              <label className="grid gap-2 text-sm">
-                <span className="font-medium">Email</span>
-                <input
-                  className="rounded-xl border border-black/10 px-4 py-3"
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  required
-                />
-              </label>
+                  <label className="grid gap-2 text-sm">
+                    <span className="font-medium">Name</span>
+                    <input className={inputClass} type="text" name="name" autoComplete="name" required />
+                  </label>
 
-              <label className="grid gap-2 text-sm">
-                <span className="font-medium">What can we help with?</span>
-                <textarea
-                  className="min-h-[110px] rounded-xl border border-black/10 px-4 py-3"
-                  name="message"
-                />
-              </label>
+                  <label className="grid gap-2 text-sm">
+                    <span className="font-medium">Phone</span>
+                    <input className={inputClass} type="tel" name="phone" autoComplete="tel" required />
+                  </label>
 
-              <button
-                className="mt-2 rounded-full bg-navy-900 px-6 py-3 text-sm font-medium text-white hover:bg-navy-800"
-                type="submit"
-              >
-                Submit request
-              </button>
+                  <label className="grid gap-2 text-sm">
+                    <span className="font-medium">
+                      Email <span className="font-normal text-navy-800">(optional)</span>
+                    </span>
+                    <input className={inputClass} type="email" name="email" autoComplete="email" />
+                  </label>
 
-              <p className="text-xs text-navy-800">
-                By submitting, you agree we may contact you by phone/text/email
-                to coordinate scheduling.
-              </p>
-            </form>
+                  <fieldset className="grid gap-2 text-sm">
+                    <legend className="mb-2 font-medium">Are you a new or returning patient?</legend>
+                    <div className="flex gap-6">
+                      <label className="flex items-center gap-2">
+                        <input type="radio" name="patientType" value="New patient" defaultChecked />
+                        New
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="radio" name="patientType" value="Returning patient" />
+                        Returning
+                      </label>
+                    </div>
+                  </fieldset>
+
+                  <label className="grid gap-2 text-sm">
+                    <span className="font-medium">Best time to call you</span>
+                    <select className={inputClass} name="bestTime" defaultValue="Anytime">
+                      <option>Anytime</option>
+                      <option>Morning</option>
+                      <option>Afternoon</option>
+                      <option>Evening</option>
+                    </select>
+                  </label>
+
+                  <label className="grid gap-2 text-sm">
+                    <span className="font-medium">
+                      Anything we should know?{" "}
+                      <span className="font-normal text-navy-800">(optional)</span>
+                    </span>
+                    <textarea className={`min-h-[110px] ${inputClass}`} name="message" />
+                    <span className="text-xs text-navy-800">
+                      Please don’t include medical details here. We’ll go over
+                      those with you by phone.
+                    </span>
+                  </label>
+
+                  {status === "error" && (
+                    <p className="text-sm text-red-700" role="alert">
+                      Sorry, something went wrong. Please call or text us at{" "}
+                      {site.phoneDisplay}.
+                    </p>
+                  )}
+
+                  <button
+                    className="mt-2 rounded-full bg-navy-900 px-6 py-3 text-sm font-medium text-white hover:bg-navy-800 disabled:opacity-60"
+                    type="submit"
+                    disabled={status === "sending"}
+                  >
+                    {status === "sending" ? "Sending…" : "Request appointment"}
+                  </button>
+
+                  <p className="text-xs text-navy-800">
+                    By submitting, you agree we may contact you by
+                    phone/text/email to coordinate scheduling.
+                  </p>
+                </form>
+              </>
+            )}
           </section>
         </div>
       </div>
