@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { site } from "@/lib/site";
+import CallTextButtons from "@/components/CallTextButtons";
 
 export default function Footer() {
   return (
@@ -18,31 +18,20 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-6 space-y-2 text-sm">
-            <a className="block hover:underline" href={site.phoneHref}>
-              <a href={site.phoneHref}>{site.phoneDisplay}</a>
-            </a>
-            <a className="block hover:underline" href={site.faxHref}>
-            Fax: {site.faxDisplay}
-            </a>
+          <div className="mt-6">
+            <CallTextButtons showSchedule />
+          </div>
 
+          <div className="mt-6 space-y-2 text-sm">
             <a className="block hover:underline" href={`mailto:${site.email}`}>
               {site.email}
             </a>
+            <div className="text-navy-800">Fax: {site.faxDisplay}</div>
             <div className="text-navy-800">
               {site.addressLines.map((l) => (
                 <div key={l}>{l}</div>
               ))}
             </div>
-          </div>
-
-          <div className="mt-6">
-            <Link
-              href="/contact#request"
-              className="inline-flex rounded-full bg-navy-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-navy-800"
-            >
-              Schedule
-            </Link>
           </div>
 
           <p className="mt-8 text-xs text-navy-800">
@@ -75,7 +64,6 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold">Map</h3>
             <div className="mt-4 overflow-hidden rounded-2xl border border-black/5">
-              {/* Placeholder embed (no API key). Swap later if desired. */}
               <iframe
                 title="Map to Warner Dental"
                 src={site.mapEmbedSrc}
