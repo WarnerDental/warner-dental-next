@@ -5,7 +5,13 @@ import { site } from "@/lib/site";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Libre_Baskerville } from "next/font/google";
 
+const serif = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-serif",
+});
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.warnerdentalteam.com"),
   title: {
@@ -43,7 +49,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={serif.variable}>
       <body className="bg-cream text-navy-900 antialiased">
         {/* Google Analytics */}
         <Script

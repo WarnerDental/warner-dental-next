@@ -23,3 +23,9 @@ html:focus-within {
     scroll-behavior: auto !important;
   }
 }
+/* Serif headings to match the logo */
+h1, h2 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400 !important;
+  letter-spacing: normal;
+}
