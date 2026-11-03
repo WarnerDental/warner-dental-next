@@ -34,7 +34,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
   <div className="h-14 w-auto">
     <img
-      src="/assets/logo-black.svg"
+      src="/assets/logo-white.svg"
       alt="Warner Dental logo"
       className="h-full w-auto object-contain"
     />

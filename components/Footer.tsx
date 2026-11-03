@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <img
-              src="/assets/logo-white.svg"
+              src="/assets/logo-black.svg"
               alt={`${site.name} logo`}
               className="h-9 w-auto"
             />
