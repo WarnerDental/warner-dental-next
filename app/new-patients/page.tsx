@@ -20,14 +20,6 @@ export default function NewPatientsPage() {
             >
               Download New Patient Form
             </a>
-
-            <a
-              href="/assets/forms/financial-policy.pdf"
-              className="rounded-full bg-black/[0.03] px-6 py-3 text-sm font-medium hover:bg-black/[0.06]"
-              download
-            >
-              Download Financial Policy Form
-            </a>
           </div>
         </div>
       </div>
