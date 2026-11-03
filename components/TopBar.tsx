@@ -29,7 +29,7 @@ export default function TopBar() {
           </Link>
           <Link
   href="/new-patients#forms"
-  className="rounded-full bg-gold-500 px-4 py-2 font-medium text-white hover:bg-gold-400"
+  className="rounded-full bg-gold-500 px-4 py-2 font-medium text-navy-900 hover:bg-gold-600"
 >
   Forms
 </Link>

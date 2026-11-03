@@ -11,9 +11,11 @@ export default {
           700: "#143364"
         },
         gold: {
-          500: "#dcd7bb",
-          400: "#fefaef"
-        }
+          600: "#C2A77E",
+          500: "#E9DFCF",
+          400: "#FAF8F4"
+        },
+        cream: "#FAF8F4"
       },
       boxShadow: {
         soft: "0 10px 30px rgba(0,0,0,0.08)"

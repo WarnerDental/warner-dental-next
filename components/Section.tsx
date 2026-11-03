@@ -11,7 +11,7 @@ export default function Section({
     <section className="py-14 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
         {eyebrow ? (
-          <p className="text-sm font-semibold tracking-wide text-gold-500">
+          <p className="text-sm font-semibold tracking-wide text-navy-700">
             {eyebrow}
           </p>
         ) : null}

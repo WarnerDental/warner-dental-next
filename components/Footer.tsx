@@ -53,7 +53,7 @@ export default function Footer() {
 
             <div className="mt-6">
               <a
-                className="text-sm font-medium text-gold-500 hover:underline"
+                className="text-sm font-medium text-navy-700 hover:underline"
                 href={site.formsHref}
               >
                 Download new patient forms

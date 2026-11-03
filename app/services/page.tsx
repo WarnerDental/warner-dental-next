@@ -87,7 +87,7 @@ function Category({
             <ul className="grid gap-2 sm:grid-cols-2">
               {items.map((x) => (
                 <li key={x} className="flex gap-3 text-sm text-navy-800">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-gold-500" />
+                  <span className="mt-2 h-2 w-2 rounded-full bg-gold-600" />
                   {x}
                 </li>
               ))}

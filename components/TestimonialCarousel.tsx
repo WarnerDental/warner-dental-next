@@ -37,7 +37,7 @@ export default function TestimonialCarousel({
             <button
               key={idx}
               className={`h-2 w-2 rounded-full ${
-                idx === i ? "bg-gold-500" : "bg-black/10"
+                idx === i ? "bg-navy-900" : "bg-black/10"
               }`}
               aria-label={`Show testimonial ${idx + 1}`}
               onClick={() => setI(idx)}

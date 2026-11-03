@@ -15,7 +15,7 @@ export default function NewPatientsPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="/assets/forms/new-patient-forms.pdf"
-              className="rounded-full bg-gold-500 px-6 py-3 text-sm font-medium text-white hover:bg-gold-400"
+              className="rounded-full bg-gold-500 px-6 py-3 text-sm font-medium text-navy-900 hover:bg-gold-600"
               download
             >
               Download New Patient Form

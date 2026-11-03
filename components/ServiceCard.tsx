@@ -21,7 +21,7 @@ export default function ServiceCard({
         </span>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-navy-800">{description}</p>
-      <p className="mt-4 text-sm font-medium text-gold-500">Learn more</p>
+      <p className="mt-4 text-sm font-medium text-navy-700">Learn more</p>
     </Link>
   );
 }

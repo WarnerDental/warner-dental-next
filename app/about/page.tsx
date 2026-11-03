@@ -83,7 +83,7 @@ export default function AboutPage() {
       <div className="pt-2">
         <a
           href="/contact#request"
-          className="inline-flex rounded-full bg-gold-500 px-6 py-3 text-sm font-medium text-white hover:bg-gold-400"
+          className="inline-flex rounded-full bg-gold-500 px-6 py-3 text-sm font-medium text-navy-900 hover:bg-gold-600"
         >
           Request an Appointment
         </a>

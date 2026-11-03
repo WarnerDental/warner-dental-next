@@ -37,7 +37,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/contact#request"
-              className="rounded-full bg-gold-500 px-6 py-3 font-medium text-white hover:bg-gold-400"
+              className="rounded-full bg-gold-500 px-6 py-3 font-medium text-navy-900 hover:bg-gold-600"
             >
               Schedule a Visit
             </Link>

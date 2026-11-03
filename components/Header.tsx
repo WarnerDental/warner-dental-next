@@ -67,7 +67,7 @@ export default function Header() {
         <div className="justify-self-end flex items-center gap-2">
           <Link
             href="/contact#request"
-            className="hidden sm:inline-flex rounded-full bg-gold-500 px-4 py-2 text-sm font-medium text-white hover:bg-gold-400"
+            className="hidden sm:inline-flex rounded-full bg-gold-500 px-4 py-2 text-sm font-medium text-navy-900 hover:bg-gold-600"
           >
             Schedule
           </Link>

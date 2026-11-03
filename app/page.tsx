@@ -35,15 +35,15 @@ export default function HomePage() {
             </p>
             <ul className="mt-6 space-y-3 text-sm text-navy-800">
               <li className="flex gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-gold-500" />
+                <span className="mt-1 h-2 w-2 rounded-full bg-gold-600" />
                 Transparent recommendations (no pressure)
               </li>
               <li className="flex gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-gold-500" />
+                <span className="mt-1 h-2 w-2 rounded-full bg-gold-600" />
                 Comfort-first approach with modern tools
               </li>
               <li className="flex gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-gold-500" />
+                <span className="mt-1 h-2 w-2 rounded-full bg-gold-600" />
                 Family-friendly environment
               </li>
             </ul>

@@ -82,7 +82,7 @@ export default function PhotoCarousel({
                 type="button"
                 onClick={() => setI(idx)}
                 aria-label={`Show photo ${idx + 1}`}
-                className={`h-2.5 w-2.5 rounded-full ${idx === i ? "bg-gold-500" : "bg-black/20"}`}
+                className={`h-2.5 w-2.5 rounded-full ${idx === i ? "bg-navy-900" : "bg-black/20"}`}
               />
             ))}
           </div>
