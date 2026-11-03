@@ -11,7 +11,7 @@ export async function GET() {
     throw new Error('[reviews] Missing GOOGLE_PLACES_API_KEY or GOOGLE_PLACE_ID');
   }
 
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=reviews&key=${GOOGLE_PLACES_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=reviews,rating,user_ratings_total&key=${GOOGLE_PLACES_API_KEY}`;
 
   const res = await fetch(url, { next: { revalidate: 86400 } });
   const data = await res.json();
@@ -33,5 +33,10 @@ export async function GET() {
       photo: r.profile_photo_url,
     }));
 
-  return NextResponse.json({ reviews });
+  return NextResponse.json({
+    reviews,
+    rating: data.result?.rating ?? null,
+    total: data.result?.user_ratings_total ?? null,
+    url: `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`,
+  });
 }
