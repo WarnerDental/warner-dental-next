@@ -249,15 +249,17 @@ export const SERVICES: Service[] = [
   {
     slug: "restorative-dentistry",
     name: "Restorative Dentistry",
-    title: "Fillings, Crowns & Bridges in Rigby",
+    title: "Fillings, Crowns, Root Canals & Extractions in Rigby",
     description:
-      "Tooth-colored fillings, crowns, bridges, and dentures in Rigby, Idaho. Clear options and costs before treatment at Warner Dental.",
+      "Tooth-colored fillings, crowns, root canals, extractions, bridges, and dentures in Rigby, Idaho. Clear options and costs before treatment at Warner Dental.",
     h1: "Fillings, Crowns & Bridges in Rigby",
     intro:
       "When a tooth needs repair, Dr. Warner walks you through the options and the cost before anything starts. Conservative recommendations, done to last.",
     includes: [
       "Tooth-colored fillings",
       "Crowns",
+      "Root canals",
+      "Extractions",
       "Bridges",
       "Implant crowns",
       "Dentures & partials",
@@ -290,6 +292,24 @@ export const SERVICES: Service[] = [
           src: "/assets/services/restorative-crown.jpg",
           alt: "Illustration of a crown being placed over a prepared tooth",
         },
+      },
+      {
+        heading: "Root canals",
+        body:
+          "When the inside of a tooth becomes infected or badly inflamed, a root canal cleans it out and seals it. It relieves the pain and lets you keep your natural tooth. A crown usually follows to protect it.",
+        points: [
+          "Relieves toothache from infection",
+          "Saves your natural tooth instead of removing it",
+        ],
+      },
+      {
+        heading: "Extractions",
+        body:
+          "Some teeth can't be saved, such as badly broken or decayed teeth. We remove them as gently as possible and talk through your replacement options before the tooth comes out.",
+        points: [
+          "Gentle, unhurried care",
+          "A plan for what comes next, whether a bridge, implant, or partial",
+        ],
       },
       {
         heading: "Bridges",
@@ -335,6 +355,10 @@ export const SERVICES: Service[] = [
       },
     ],
     faqs: [
+      {
+        q: "Is a root canal painful?",
+        a: "The procedure is done with the tooth fully numbed, and most patients say it feels much like getting a filling. It's usually the infection beforehand that hurts — a root canal relieves that pain.",
+      },
       {
         q: "Do I need a crown or just a filling?",
         a: "Smaller areas of damage can usually be fixed with a filling. When a large part of the tooth is damaged or cracked, a crown protects it better. Dr. Warner will show you what he sees and explain why.",

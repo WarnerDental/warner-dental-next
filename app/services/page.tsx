@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Dental Services in Rigby, ID",
   description:
-    "Checkups and cleanings, fillings, crowns, braces, clear aligners, esthetic crowns, whitening, implant crowns, and emergency dental care at Warner Dental in Rigby, Idaho.",
+    "Checkups and cleanings, fillings, crowns, root canals, extractions, braces, clear aligners, esthetic crowns, whitening, implant crowns, and emergency dental care at Warner Dental in Rigby, Idaho.",
   alternates: { canonical: "/services" },
 };
 
@@ -36,7 +36,7 @@ export default function ServicesPage() {
             blurb="Repairs that look natural and hold up, with your options and costs explained before we start."
             title="Restorative"
             href="/services/restorative-dentistry"
-            items={["Tooth-colored fillings", "Crowns", "Bridges", "Dentures & partials"]}
+            items={["Tooth-colored fillings", "Crowns", "Root canals", "Extractions", "Bridges", "Dentures & partials"]}
           />
           <Category
             id="cosmetic"
