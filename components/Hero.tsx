@@ -13,7 +13,7 @@ export default function Hero() {
           loop
           playsInline
           preload="metadata"
-          poster="/assets/photos/hero-poster.png" // optional; remove if you don’t have this
+          poster="/assets/photos/hero-poster.jpg" // optional; remove if you don’t have this
         >
           <source src="/assets/video/hero.mp4" type="video/mp4" />
           {/* Fallback text if video can’t load */}
@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="relative mx-auto flex min-h-[80vh] max-w-6xl items-center px-4 py-24 sm:py-32">
         <div className="max-w-xl text-white">
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
-            Welcome to{" "}
+            Your Rigby Dentist{" "}
             <span className="block">Warner Dental</span>
           </h1>
 
@@ -50,7 +50,8 @@ export default function Hero() {
           </div>
 
           <p className="mt-6 text-sm text-white/80">
-            Rigby, Idaho • Family, cosmetic, and restorative dentistry
+            Family, cosmetic, and restorative dentistry in Rigby, Idaho — serving
+            Rigby, Rexburg, Ririe, Menan, and Idaho Falls.
           </p>
         </div>
       </div>

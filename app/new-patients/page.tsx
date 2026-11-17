@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "New Patients – Now Accepting in Rigby",
+  description:
+    "New to Warner Dental in Rigby, Idaho? What to expect at your first visit, insurance (we take almost every plan), payment options, and new patient forms.",
+  alternates: { canonical: "/new-patients" },
+};
 
 export default function NewPatientsPage() {
   return (

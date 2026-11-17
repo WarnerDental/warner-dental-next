@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Section from "@/components/Section";
 import PhotoCarousel from "@/components/PhotoCarousel";
+
+export const metadata: Metadata = {
+  title: "About Dr. Cory Warner – Rigby Dentist",
+  description:
+    "Dr. Cory Warner grew up in Rigby and came home to open Warner Dental. Clear recommendations, no pressure, and care for the whole family.",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   return (
@@ -10,7 +18,8 @@ export default function AboutPage() {
             About Warner Dental
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-navy-800">
-            Modern, friendly dentistry built around comfort, clarity, and long-term health.
+            A small, hometown dental office in Rigby, Idaho, built around comfort, clarity, and
+            long-term health.
           </p>
         </div>
       </div>
@@ -19,7 +28,13 @@ export default function AboutPage() {
         <div className="grid gap-10 md:grid-cols-2">
           <div className="space-y-4 text-navy-800 leading-relaxed">
             <p>
-              {/* TODO: replace with your real story */}
+              Dr. Cory Warner grew up in Rigby and has practiced dentistry for about six years.
+              Before opening Warner Dental, he worked in larger, high-volume practices. That
+              experience is what convinced him to come home and build something different: a
+              smaller office where patients get unhurried time with their dentist and honest
+              recommendations.
+            </p>
+            <p>
               Dr. Warner’s approach to dentistry is conservative, thoughtful, and centered on doing what’s truly necessary. As he entered clinical practice, he became increasingly aware that dentistry can sometimes lean toward more treatment than a patient truly needs—and it reinforced his commitment to a prevention- and preservation-focused philosophy. His goal is to help you keep as much of your natural tooth structure as possible while preventing small issues from becoming bigger problems. And when treatment is needed, he takes time to explain what he’s seeing, walk through your options clearly, and let you choose what fits best for your goals, comfort, and situation.
             </p>
             <p>
@@ -31,7 +46,6 @@ export default function AboutPage() {
           </div>
 
           <div className="overflow-hidden rounded-3xl border border-black/5 shadow-soft">
-            {/* TODO: swap photo */}
             <img
               src="/assets/photos/photo-3.png"
               alt="Bright, modern dental office interior"
@@ -62,7 +76,6 @@ export default function AboutPage() {
 
     <div className="space-y-4 text-navy-800 leading-relaxed">
       <p>
-        {/* TODO: personalize this bio */}
         Hi, I'm Cory Warner, and I’m grateful to practice dentistry in the community I grew up in. 
         My wife, Paige, and I just had our first baby last year--a little girl we named Eleanor. Together, 
         we enjoy spending time together with our family, making yummy food, and exploring all that Idaho

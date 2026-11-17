@@ -1,10 +1,20 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Dental Services in Rigby, ID",
+  description:
+    "Checkups and cleanings, fillings, crowns, braces, clear aligners, esthetic crowns, whitening, implant crowns, and emergency dental care at Warner Dental in Rigby, Idaho.",
+  alternates: { canonical: "/services" },
+};
+
 export default function ServicesPage() {
   return (
     <>
       <div className="border-b border-black/5 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Services
+            Dental Services in Rigby
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-navy-800">
             Comprehensive care—preventive, restorative, cosmetic, and family dentistry.
@@ -16,33 +26,52 @@ export default function ServicesPage() {
         <div className="grid gap-10">
           <Category
             id="preventive"
+            blurb="Regular checkups and cleanings that catch small problems early, before they turn into bigger, more expensive ones."
             title="Preventive"
+            href="/services/family-dentistry"
             items={["Exams & cleanings", "Digital X-rays", "Oral cancer screening", "Fluoride & sealants"]}
           />
           <Category
             id="restorative"
+            blurb="Repairs that look natural and hold up, with your options and costs explained before we start."
             title="Restorative"
+            href="/services/restorative-dentistry"
             items={["Tooth-colored fillings", "Crowns", "Bridges", "Dentures & partials"]}
           />
           <Category
             id="cosmetic"
+            blurb="Brighter, more even smiles with natural-looking results, from whitening a single dark tooth to full esthetic crowns."
             title="Cosmetic"
-            items={["Whitening", "Bonding", "Veneers", "Smile planning"]}
+            href="/services/cosmetic-dentistry"
+            items={["Esthetic crowns", "Internal whitening", "External whitening", "Smile planning"]}
           />
           <Category
             id="family"
+            blurb="Care for kids, teens, and adults under one roof, at a pace that keeps everyone comfortable."
             title="Family Dentistry"
+            href="/services/family-dentistry"
             items={["Kids & teens", "Adult care", "Gentle appointments", "Prevention coaching"]}
           />
           <Category
             id="implants"
+            blurb="Custom crowns that turn a dental implant into a tooth that looks and works like the real thing."
             title="Implant Restorations"
+            href="/services/dental-implants"
             items={["Implant crowns", "Implant bridges", "Implant-supported dentures", "Coordination of care"]}
           />
           <Category
             id="comfort"
+            blurb="Toothache or broken tooth? Call or text and we'll get you in as soon as we can."
             title="Comfort & Emergency"
+            href="/services/emergency-dentist"
             items={["Toothache relief", "Same-day priority when possible", "Anxiety-friendly approach", "Clear next steps"]}
+          />
+          <Category
+            id="braces"
+            blurb="Traditional braces or clear aligners, whichever makes the most sense for your teeth."
+            title="Braces & Clear Aligners"
+            href="/services/braces"
+            items={["Traditional braces", "Clear aligners", "Single-arch options", "Teens & adults"]}
           />
         </div>
 
@@ -66,21 +95,29 @@ export default function ServicesPage() {
 function Category({
   id,
   title,
+  blurb,
+  href,
   items
 }: {
   id: string;
   title: string;
+  blurb: string;
+  href: string;
   items: string[];
 }) {
   return (
     <section id={id} className="scroll-mt-24">
       <div className="grid gap-6 md:grid-cols-3 md:items-start">
         <div className="md:col-span-1">
-          <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            <Link href={href} className="hover:underline">{title}</Link>
+          </h2>
           <p className="mt-2 text-sm text-navy-800">
-            {/* TODO: customize per category */}
-            Thoughtful care designed for comfort and long-term results.
+            {blurb}
           </p>
+          <Link href={href} className="mt-3 inline-block text-sm font-medium text-navy-700 hover:underline">
+            Learn more →
+          </Link>
         </div>
         <div className="md:col-span-2">
           <div className="rounded-2xl border border-black/5 bg-white p-6 shadow-soft">

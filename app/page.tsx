@@ -68,7 +68,7 @@ export default function HomePage() {
           <div className="overflow-hidden rounded-3xl border border-black/5 shadow-soft">
             <img
               src="/assets/photos/photo-2.png"
-              alt="Dentist smiling"
+              alt="Dr. Cory Warner, dentist in Rigby, Idaho"
               className="h-full w-full object-cover"
             />
           </div>
@@ -80,32 +80,37 @@ export default function HomePage() {
           <ServiceCard
             title="Checkups & Cleanings"
             description="Prevention-first visits to keep you healthy and catch concerns early."
-            href="/services#preventive"
+            href="/services/family-dentistry"
           />
           <ServiceCard
             title="Cosmetic Dentistry"
-            description="Whitening, bonding, and veneers—subtle upgrades with natural results."
-            href="/services#cosmetic"
+            description="Esthetic crowns and whitening—natural-looking results."
+            href="/services/cosmetic-dentistry"
           />
           <ServiceCard
             title="Restorative Care"
             description="Fillings, crowns, and bridges designed for comfort and longevity."
-            href="/services#restorative"
+            href="/services/restorative-dentistry"
           />
           <ServiceCard
             title="Family Dentistry"
             description="A calm, friendly experience for kids, teens, and adults."
-            href="/services#family"
+            href="/services/family-dentistry"
           />
           <ServiceCard
             title="Implant Restorations"
             description="Modern tooth replacement options that look and feel secure."
-            href="/services#implants"
+            href="/services/dental-implants"
           />
           <ServiceCard
             title="Comfort & Emergency"
             description="We prioritize gentle care—especially when you’re in pain or anxious."
-            href="/services#comfort"
+            href="/services/emergency-dentist"
+          />
+          <ServiceCard
+            title="Braces & Clear Aligners"
+            description="Straighten your teeth close to home, with the dentist who already knows your smile."
+            href="/services/braces"
           />
         </div>
       </Section>

@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import DentistSchema from "@/components/DentistSchema";
 import { Libre_Baskerville } from "next/font/google";
 
 const serif = Libre_Baskerville({
@@ -15,22 +16,23 @@ const serif = Libre_Baskerville({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.warnerdentalteam.com"),
   title: {
-    default: `${site.name} | ${site.tagline}`,
+    default: "Dentist in Rigby, ID | Warner Dental – Family & Cosmetic Dentistry",
     template: `%s | ${site.name}`,
   },
   description:
-    "Modern, friendly dental care in Rigby, Idaho. Preventive, restorative, and cosmetic dentistry for the whole family.",
+    "Warner Dental is a family and cosmetic dentist in Rigby, Idaho. Dr. Cory Warner offers checkups, cleanings, fillings, crowns, braces, whitening, and emergency care. Now accepting new patients — call (208) 745-7424.",
+  alternates: { canonical: "/" },
   icons: [{ rel: "icon", url: "/icon.svg", type: "image/svg+xml" }],
   openGraph: {
     type: "website",
     url: "https://www.warnerdentalteam.com",
-    title: `${site.name} | ${site.tagline}`,
+    title: "Dentist in Rigby, ID | Warner Dental",
     description:
       "Relationship-focused dental care in Rigby, Idaho. Conservative, world-class family and cosmetic dentistry without the rushed, corporate feel.",
     siteName: site.name,
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Warner Dental – Dentist in Rigby, Idaho",
@@ -86,6 +88,8 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+
+        <DentistSchema />
 
         <TopBar />
         <Header />
