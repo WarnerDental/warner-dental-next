@@ -12,6 +12,22 @@ export const site = {
   formsHref: "/assets/forms/new-patient-forms.pdf", // TODO: replace with your real PDF
   mapEmbedSrc:
     "https://www.google.com/maps?q=190+N+1st+W,+Rigby,+ID+83442&output=embed",
+  // ── SEO / structured data ──
+  // Keep these EXACTLY matching your Google Business Profile.
+  url: "https://www.warnerdentalteam.com",
+  dentist: "Dr. Cory Warner",
+  street: "190 N 1st W",
+  city: "Rigby",
+  region: "ID",
+  postalCode: "83442",
+  googleMapsUrl:
+    "https://www.google.com/maps/place/?q=place_id:ChIJTVW5tilvVFMRRRiRBrs50ds",
+  areaServed: ["Rigby", "Rexburg", "Idaho Falls", "Ammon", "Menan", "Ririe", "Jefferson County"],
+  // Machine-readable hours for Google. If you change `hours` below, change these too.
+  schemaHours: [
+    { days: ["Monday", "Tuesday", "Wednesday"], opens: "08:00", closes: "17:00" },
+    { days: ["Friday"], opens: "08:00", closes: "14:00" },
+  ],
   hours: [
     { day: "Mon", hours: "8:00 AM – 5:00 PM" },
     { day: "Tue", hours: "8:00 AM – 5:00 PM" },
