@@ -5,25 +5,18 @@ import Autoplay from 'embla-carousel-autoplay';
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 
-type Review = {
-  author: string;
-  rating: number;
-  text: string;
-  time?: string;
-  photo?: string;
-};
-
-type ReviewData = {
-  reviews: Review[];
-  rating: number | null;
-  total: number | null;
-  url?: string;
-};
+import type { ReviewData } from '@/lib/reviews';
 
 const LONG_REVIEW = 280; // characters before "Read more" appears
 
-export default function ReviewsCarousel() {
-  const [data, setData] = useState<ReviewData | null>(null);
+// `initialData` comes from the server (app/page.tsx), so the reviews are in the HTML.
+// If the server couldn't get them, the carousel falls back to fetching in the browser.
+export default function ReviewsCarousel({
+  initialData = null,
+}: {
+  initialData?: ReviewData | null;
+}) {
+  const [data, setData] = useState<ReviewData | null>(initialData);
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
@@ -34,11 +27,12 @@ export default function ReviewsCarousel() {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   useEffect(() => {
+    if (initialData) return;
     fetch('/api/reviews')
-      .then((r) => r.json())
+      .then((r) => (r.ok ? r.json() : null))
       .then((d) => setData(d))
       .catch(() => setData(null));
-  }, []);
+  }, [initialData]);
 
   // Cards can change height when expanded; let the carousel re-measure
   useEffect(() => {
