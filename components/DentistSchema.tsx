@@ -31,8 +31,16 @@ export default function DentistSchema() {
     })),
     areaServed: site.areaServed.map((name) => ({ "@type": "Place", name })),
     hasMap: site.googleMapsUrl,
-    sameAs: [site.googleMapsUrl],
-    employee: { "@type": "Person", name: site.dentist, jobTitle: "Dentist" },
+    sameAs: [site.googleMapsUrl, ...site.profiles],
+    isAcceptingNewPatients: true,
+    medicalSpecialty: "Dentistry",
+    // Full details for Dr. Warner (school, degree) live on the About page under this same @id.
+    employee: {
+      "@type": "Person",
+      "@id": `${site.url}/#dr-warner`,
+      name: site.dentist,
+      jobTitle: "Dentist",
+    },
     availableService: SERVICES.map((s) => ({
       "@type": "MedicalProcedure",
       name: s.name,
