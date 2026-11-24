@@ -4,8 +4,14 @@ import ServiceCard from "@/components/ServiceCard";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import CTA from "@/components/CTA";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
+import { getReviews } from "@/lib/reviews";
 
-export default function HomePage() {
+// Re-build the homepage at most once a day so the reviews stay fresh.
+export const revalidate = 86400;
+
+export default async function HomePage() {
+  const reviewData = await getReviews();
+
   return (
     <>
       {/* OPENING BANNER */}
@@ -116,7 +122,7 @@ export default function HomePage() {
       </Section>
 
 <Section eyebrow="Google Reviews" title="What Our Patients Say">
-  <ReviewsCarousel />
+  <ReviewsCarousel initialData={reviewData} />
 </Section>
       <Section eyebrow="Insurance & financing" title="Simple, straightforward options">
         <div className="grid gap-5 md:grid-cols-2">
