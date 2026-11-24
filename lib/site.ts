@@ -23,9 +23,10 @@ export const site = {
   googleMapsUrl:
     "https://www.google.com/maps/place/?q=place_id:ChIJTVW5tilvVFMRRRiRBrs50ds",
   facebookUrl: "https://www.facebook.com/profile.php?id=61585065629614",
-  // Other profiles of the practice (add the Yelp page once it's claimed).
+  // Other profiles of the practice (Facebook, Yelp).
   profiles: [
     "https://www.facebook.com/profile.php?id=61585065629614",
+    "https://www.yelp.com/biz/warner-dental-rigby",
   ],
   areaServed: ["Rigby", "Rexburg", "Idaho Falls", "Ammon", "Menan", "Ririe", "Jefferson County"],
   // Machine-readable hours for Google. If you change `hours` below, change these too.
