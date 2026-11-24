@@ -1,6 +1,36 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
 import PhotoCarousel from "@/components/PhotoCarousel";
+import { site } from "@/lib/site";
+
+// Structured data for Dr. Warner. Linked to the practice data in components/DentistSchema.tsx
+// through the same @id. Only list facts that also appear on this page.
+const dentistPerson = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${site.url}/#dr-warner`,
+  name: "Cory Warner",
+  honorificPrefix: "Dr.",
+  honorificSuffix: "DDS",
+  jobTitle: "Dentist",
+  url: `${site.url}/about`,
+  image: `${site.url}/assets/photos/photo-2.png`,
+  worksFor: { "@id": `${site.url}/#practice` },
+  sameAs: [site.facebookUrl],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Creighton University School of Dentistry",
+  },
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "degree",
+    name: "Doctor of Dental Surgery (DDS), cum laude, 2022",
+    recognizedBy: {
+      "@type": "CollegeOrUniversity",
+      name: "Creighton University School of Dentistry",
+    },
+  },
+};
 
 export const metadata: Metadata = {
   title: "About Dr. Cory Warner – Rigby Dentist",
@@ -12,6 +42,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(dentistPerson) }}
+      />
+
       <div className="border-b border-black/5 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -28,8 +63,9 @@ export default function AboutPage() {
         <div className="grid gap-10 md:grid-cols-2">
           <div className="space-y-4 text-navy-800 leading-relaxed">
             <p>
-              Dr. Cory Warner grew up in Rigby and has practiced dentistry for about six years.
-              Before opening Warner Dental, he worked in larger, high-volume practices. That
+              Dr. Cory Warner grew up in Rigby and has been caring for patients since 2020,
+              beginning with his clinical training at Creighton. Before opening Warner Dental, he
+              worked in larger, high-volume practices. That
               experience is what convinced him to come home and build something different: a
               smaller office where patients get unhurried time with their dentist and honest
               recommendations.
@@ -52,6 +88,16 @@ export default function AboutPage() {
               className="h-full w-full object-cover"
             />
           </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="Background" title="Training & background">
+        <div className="max-w-3xl space-y-4 text-navy-800 leading-relaxed">
+          <p>
+            Dr. Cory Warner earned his Doctor of Dental Surgery degree, cum laude, from Creighton
+            University School of Dentistry in 2022. He practiced in Arizona for two years before
+            coming home to eastern Idaho, and opened Warner Dental in Rigby, the town he grew up in.
+          </p>
         </div>
       </Section>
 
